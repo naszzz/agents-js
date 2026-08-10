@@ -1,5 +1,14 @@
 # @livekit/agents-plugin-soniox
 
+## 1.6.3
+
+### Patch Changes
+
+- Report recognition usage on every Soniox response frame so processed audio is not dropped when no endpoint is emitted. - [#2223](https://github.com/livekit/agents-js/pull/2223) ([@rosetta-livekit-bot](https://github.com/apps/rosetta-livekit-bot))
+
+- Updated dependencies [[`7e9f46e`](https://github.com/livekit/agents-js/commit/7e9f46ef021700279db1c16ef652354239ffec92), [`ed706fa`](https://github.com/livekit/agents-js/commit/ed706fa3fe69bc5289fe2d73c536d567fab3ad2d)]:
+  - @livekit/agents@1.6.3
+
 ## 1.6.2
 
 ### Patch Changes

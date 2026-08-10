@@ -1,5 +1,13 @@
 # @livekit/agents
 
+## 1.6.3
+
+### Patch Changes
+
+- Default null token counts in OpenAI-compatible streaming usage payloads to zero. - [#2250](https://github.com/livekit/agents-js/pull/2250) ([@rosetta-livekit-bot](https://github.com/apps/rosetta-livekit-bot))
+
+- Avoid throwing when interrupting protected speech that was already interrupted or completed. - [#2252](https://github.com/livekit/agents-js/pull/2252) ([@rosetta-livekit-bot](https://github.com/apps/rosetta-livekit-bot))
+
 ## 1.6.2
 
 ### Patch Changes
