@@ -8,6 +8,7 @@ import {
   APIStatusError,
   APITimeoutError,
   AudioByteStream,
+  ConnectionPool,
   Future,
   type TimedString,
   asError,
@@ -21,11 +22,19 @@ import {
 import type { AudioFrame } from '@livekit/rtc-node';
 import { type RawData, WebSocket } from 'ws';
 import type { DefaultLanguages, TTSModels } from './models.js';
+import {
+  type RimeV1Connection,
+  RimeV1Connection as RimeV1ConnectionImpl,
+  type RimeV1Input,
+  type RimeV1StartOptions,
+  rimeV1WebSocketUrl,
+} from './websocket_v1.js';
 
 const RIME_BASE_URL = 'https://users.rime.ai/v1/rime-tts';
 const RIME_WS_BASE_URL = 'wss://users-ws.rime.ai';
 const RIME_TTS_SAMPLE_RATE = 24000;
 const RIME_TTS_CHANNELS = 1;
+const rimeV1Pools = new WeakMap<TTS, ConnectionPool<RimeV1Connection>>();
 
 /**
  * Get the appropriate sample rate based on TTS options.
@@ -57,6 +66,7 @@ export interface TTSOptions {
   baseURL?: string;
   apiKey?: string;
   useWebsocket?: boolean;
+  websocketAPI?: 'ws3' | 'rime.v1';
   segment?: string;
   tokenizer?: tokenize.SentenceTokenizer;
   lang?: DefaultLanguages | string;
@@ -64,6 +74,7 @@ export interface TTSOptions {
   temperature?: number;
   top_p?: number;
   max_tokens?: number;
+  textLookaheadTokens?: number;
   samplingRate?: number;
   timeScaleFactor?: number;
   speedAlpha?: number;
@@ -83,6 +94,7 @@ const defaultTTSOptions: TTSOptions = {
   apiKey: process.env.RIME_API_KEY,
   baseURL: RIME_BASE_URL,
   useWebsocket: false,
+  websocketAPI: 'ws3',
   segment: 'bySentence',
 };
 
@@ -135,6 +147,7 @@ function fetchPayload(opts: TTSOptions, text: string): Record<string, unknown> {
         'apiKey',
         'baseURL',
         'useWebsocket',
+        'websocketAPI',
         'segment',
         'tokenizer',
         'speaker',
@@ -144,6 +157,7 @@ function fetchPayload(opts: TTSOptions, text: string): Record<string, unknown> {
         'temperature',
         'top_p',
         'max_tokens',
+        'textLookaheadTokens',
         'samplingRate',
         'timeScaleFactor',
         'speedAlpha',
@@ -190,6 +204,21 @@ function resolveOptions(opts: Partial<TTSOptions>): TTSOptions {
     baseURL: opts.baseURL ?? (useWebsocket ? RIME_WS_BASE_URL : RIME_BASE_URL),
   };
 
+  if (resolved.websocketAPI !== 'ws3' && resolved.websocketAPI !== 'rime.v1') {
+    throw new Error("websocketAPI must be either 'ws3' or 'rime.v1'");
+  }
+  if (useWebsocket && resolved.websocketAPI === 'rime.v1') {
+    if (resolved.modelId !== 'coda') {
+      throw new Error("websocketAPI='rime.v1' currently supports only modelId='coda'");
+    }
+    if (opts.baseURL === undefined) {
+      throw new Error("baseURL is required when websocketAPI='rime.v1'");
+    }
+    if (resolved.speedAlpha !== undefined) {
+      throw new Error("speedAlpha is not supported by websocketAPI='rime.v1'");
+    }
+  }
+
   if (opts.speaker === undefined && opts.modelId === 'coda') {
     resolved.speaker = 'lyra';
   }
@@ -205,6 +234,8 @@ function resolveOptions(opts: Partial<TTSOptions>): TTSOptions {
 
 export class TTS extends tts.TTS {
   private opts: TTSOptions;
+  #v1Pool: ConnectionPool<RimeV1Connection>;
+  #closed = false;
   label = 'rime.TTS';
 
   /**
@@ -222,13 +253,21 @@ export class TTS extends tts.TTS {
     const sampleRate = getSampleRate(resolvedOpts);
     super(sampleRate, RIME_TTS_CHANNELS, {
       streaming: resolvedOpts.useWebsocket ?? false,
-      alignedTranscript: resolvedOpts.useWebsocket ?? false,
+      alignedTranscript:
+        (resolvedOpts.useWebsocket ?? false) && resolvedOpts.websocketAPI === 'ws3',
     });
 
     this.opts = resolvedOpts;
     if (this.opts.apiKey === undefined) {
       throw new Error('RIME API key is required, whether as an argument or as $RIME_API_KEY');
     }
+    this.#v1Pool = new ConnectionPool<RimeV1Connection>({
+      connectCb: (timeoutMs) => this.#connectV1(timeoutMs),
+      closeCb: async (connection) => connection.close(),
+      maxSessionDuration: 300_000,
+      markRefreshedOnGet: true,
+    });
+    rimeV1Pools.set(this, this.#v1Pool);
   }
 
   get model(): string {
@@ -245,7 +284,17 @@ export class TTS extends tts.TTS {
    * @param opts - Partial options to update
    */
   updateOptions(opts: Partial<TTSOptions>) {
+    if (opts.websocketAPI !== undefined && opts.websocketAPI !== this.opts.websocketAPI) {
+      throw new Error('websocketAPI cannot be changed after TTS construction');
+    }
+    if (opts.apiKey !== undefined && opts.apiKey !== this.opts.apiKey) {
+      throw new Error('apiKey cannot be changed after TTS construction');
+    }
+    const previousBaseURL = this.opts.baseURL;
     this.opts = resolveOptions({ ...this.opts, ...opts });
+    if (this.opts.websocketAPI === 'rime.v1' && this.opts.baseURL !== previousBaseURL) {
+      this.#v1Pool.invalidate();
+    }
   }
 
   /**
@@ -272,6 +321,29 @@ export class TTS extends tts.TTS {
       throw new Error('Rime TTS streaming requires useWebsocket=true at construction time');
     }
     return new SynthesizeStream(this, { ...this.opts }, options?.connOptions);
+  }
+
+  prewarm(): void {
+    if (this.opts.useWebsocket && this.opts.websocketAPI === 'rime.v1') {
+      this.#v1Pool.prewarm();
+    }
+  }
+
+  override async close(): Promise<void> {
+    this.#closed = true;
+    await this.#v1Pool.close();
+    await super.close();
+  }
+
+  async #connectV1(timeoutMs: number): Promise<RimeV1Connection> {
+    if (this.#closed) {
+      throw new APIConnectionError({ message: 'Rime TTS is closed' });
+    }
+    return await RimeV1ConnectionImpl.connect({
+      url: rimeV1WebSocketUrl(this.opts.baseURL!),
+      apiKey: this.opts.apiKey!,
+      timeoutMs,
+    });
   }
 }
 
@@ -365,14 +437,119 @@ export class SynthesizeStream extends tts.SynthesizeStream {
   #opts: TTSOptions;
   #logger = log();
   #tokenizer: tokenize.SentenceStream;
+  #v1Pool: ConnectionPool<RimeV1Connection>;
 
   constructor(tts: TTS, opts: TTSOptions, connOptions?: APIConnectOptions) {
     super(tts, connOptions);
     this.#opts = opts;
     this.#tokenizer = (opts.tokenizer ?? new tokenize.basic.SentenceTokenizer()).stream();
+    const pool = rimeV1Pools.get(tts);
+    if (!pool) throw new Error('Rime v1 connection pool is not initialized');
+    this.#v1Pool = pool;
   }
 
   protected async run() {
+    if (this.#opts.websocketAPI === 'rime.v1') {
+      await this.#runV1();
+      return;
+    }
+    await this.#runWs3();
+  }
+
+  async #runV1() {
+    const start: RimeV1StartOptions = {
+      speaker: this.#opts.speaker,
+      language: this.#opts.lang ?? 'eng',
+      sampleRate: getSampleRate(this.#opts),
+      timeScaleFactor: this.#opts.timeScaleFactor,
+      maxTokens: this.#opts.max_tokens,
+      textLookaheadTokens: this.#opts.textLookaheadTokens,
+    };
+    const inputs = async function* (stream: SynthesizeStream): AsyncGenerator<RimeV1Input> {
+      for await (const value of stream.input) {
+        if (value === SynthesizeStream.FLUSH_SENTINEL) {
+          yield { type: 'flush' };
+        } else if (value) {
+          stream.markStarted();
+          yield { type: 'text', text: value };
+        }
+      }
+    };
+
+    let connection: RimeV1Connection | undefined;
+    let released = false;
+    let audioReceived = false;
+    const release = () => {
+      if (!connection || released) return;
+      released = true;
+      if (connection.reusable) this.#v1Pool.put(connection);
+      else this.#v1Pool.remove(connection);
+    };
+
+    try {
+      connection = await this.#v1Pool.get(this.connOptions.timeoutMs);
+      const byteStream = new AudioByteStream(start.sampleRate, RIME_TTS_CHANNELS);
+      let requestId = '';
+      let contextId = '';
+      let lastFrame: AudioFrame | undefined;
+      const sendLastFrame = (final: boolean) => {
+        if (!lastFrame || this.queue.closed) return;
+        this.queue.put({ requestId, segmentId: contextId, frame: lastFrame, final });
+        lastFrame = undefined;
+      };
+
+      for await (const event of connection.synthesize({
+        start,
+        inputs: inputs(this),
+        signal: this.abortSignal,
+      })) {
+        contextId = event.contextId;
+        if (event.type === 'started') {
+          requestId = event.requestId || event.contextId;
+          this.noteProviderRequestId(event.contextId);
+          this.noteProviderRequestId(event.requestId);
+        } else {
+          audioReceived = true;
+          for (const frame of byteStream.write(event.data)) {
+            sendLastFrame(false);
+            lastFrame = frame;
+          }
+        }
+      }
+
+      for (const frame of byteStream.flush()) {
+        if (frame.samplesPerChannel === 0) continue;
+        sendLastFrame(false);
+        lastFrame = frame;
+      }
+      sendLastFrame(true);
+    } catch (error) {
+      release();
+      if (this.abortSignal.aborted) return;
+      if (audioReceived && error instanceof APIError) {
+        if (error instanceof APIStatusError) {
+          throw new APIStatusError({
+            message: error.message,
+            options: {
+              statusCode: error.statusCode,
+              requestId: error.requestId,
+              body: error.body,
+              retryable: false,
+            },
+          });
+        }
+        throw new APIConnectionError({
+          message: error.message,
+          options: { retryable: false },
+        });
+      }
+      throw error;
+    } finally {
+      release();
+    }
+  }
+
+  async #runWs3() {
     const requestId = shortuuid();
     const contextId = shortuuid();
     const bstream = new AudioByteStream(getSampleRate(this.#opts), RIME_TTS_CHANNELS);

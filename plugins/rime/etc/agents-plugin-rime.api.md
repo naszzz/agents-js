@@ -44,9 +44,13 @@ export class SynthesizeStream extends tts.SynthesizeStream {
 export class TTS extends tts.TTS {
     constructor(opts?: Partial<TTSOptions>);
     // (undocumented)
+    close(): Promise<void>;
+    // (undocumented)
     label: string;
     // (undocumented)
     get model(): string;
+    // (undocumented)
+    prewarm(): void;
     // (undocumented)
     get provider(): string;
     // (undocumented)
@@ -102,6 +106,8 @@ export interface TTSOptions {
     // (undocumented)
     temperature?: number;
     // (undocumented)
+    textLookaheadTokens?: number;
+    // (undocumented)
     timeScaleFactor?: number;
     // Warning: (ae-forgotten-export) The symbol "tokenize" needs to be exported by the entry point index.d.ts
     //
@@ -111,6 +117,8 @@ export interface TTSOptions {
     top_p?: number;
     // (undocumented)
     useWebsocket?: boolean;
+    // (undocumented)
+    websocketAPI?: 'ws3' | 'rime.v1';
 }
 
 // (No @packageDocumentation comment for this package)
