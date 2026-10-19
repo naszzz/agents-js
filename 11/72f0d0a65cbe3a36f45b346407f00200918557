@@ -1,0 +1,29 @@
+.changeset/rime-v1-explicit-model.md
+  s_8e934c3267144b::t_9e5698054b69ac 1-9
+plugins/rime/README.md
+  s_8e934c3267144b::t_46131ff34e8a8e 21-23,29-30,35-44
+plugins/rime/etc/agents-plugin-rime.api.md
+  s_8e934c3267144b::t_a90be7a72e1896 10
+plugins/rime/src/options.test.ts
+  s_8e934c3267144b::t_888539961b05a7 10-15,29-30,36-37,43-71,82,145-149
+plugins/rime/src/options.ts
+  s_8e934c3267144b::t_4b9369cf8d1cbb 76,103,185-188
+plugins/rime/src/websocket.test.ts
+  s_8e934c3267144b::t_16398a22b5e326 107,109,160,164,176,197-207,683-684,717
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1172f0d0a65cbe3a36f45b346407f00200918557",
+  "prompts": {},
+  "sessions": {
+    "s_8e934c3267144b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a155e9-7d8e-7232-918d-a99da4bb35cc",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
