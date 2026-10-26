@@ -1,0 +1,25 @@
+plugins/rime/README.md
+  s_2ed902f4b7cb9e::t_e1304f2293cd90 20-23,40-54,57-97
+  s_2ed902f4b7cb9e::t_0e29ae26033789 13-16
+plugins/rime/src/realtime/realtime_model.ts
+  s_2ed902f4b7cb9e::t_1655c05ad58a02 11,27,31,143,196,250,254,352,559-560
+  s_2ed902f4b7cb9e::t_b135f8627bce96 29
+.changeset/quiet-prism-realtime.md
+  s_2ed902f4b7cb9e::t_e1304f2293cd90 5-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a0e963110e5dc3d182bb33b55531bee6a981c65c",
+  "prompts": {},
+  "sessions": {
+    "s_2ed902f4b7cb9e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17990-75da-7f31-bed9-8edddd12f59a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
