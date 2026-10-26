@@ -1,5 +1,12 @@
 # @livekit/agents-plugin-meta
 
+## 1.9.5
+
+### Patch Changes
+
+- Updated dependencies [[`f03a68e`](https://github.com/livekit/agents-js/commit/f03a68ef2bcfede42163b1d76aa7c31dc9496eca)]:
+  - @livekit/agents@1.9.5
+
 ## 1.9.4
 
 ### Patch Changes

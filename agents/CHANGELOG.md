@@ -1,5 +1,11 @@
 # @livekit/agents
 
+## 1.9.5
+
+### Patch Changes
+
+- Add DecisionModel for provider-neutral batched probability, choice, and score evaluation. - [#2735](https://github.com/livekit/agents-js/pull/2735) ([@rosetta-livekit-bot](https://github.com/apps/rosetta-livekit-bot))
+
 ## 1.9.4
 
 ### Patch Changes
