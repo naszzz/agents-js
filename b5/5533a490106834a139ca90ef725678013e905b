@@ -1,0 +1,26 @@
+plugins/rime/src/realtime/realtime_model.ts
+  s_2ed902f4b7cb9e::t_9ee09d6629e485 189,734-735,972
+.changeset/tidy-prism-truncation.md
+  s_2ed902f4b7cb9e::t_9ee09d6629e485 7
+plugins/rime/src/realtime/truncation.test.ts
+  s_2ed902f4b7cb9e::t_6adbe39a784f18 145-184,186-215
+  s_2ed902f4b7cb9e::t_3ed2a1ef3a6c58 185
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_2ed902f4b7cb9e::t_9ee09d6629e485 647-655,663-665,673-675
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b55533a490106834a139ca90ef725678013e905b",
+  "prompts": {},
+  "sessions": {
+    "s_2ed902f4b7cb9e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17990-75da-7f31-bed9-8edddd12f59a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}

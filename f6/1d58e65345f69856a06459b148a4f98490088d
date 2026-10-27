@@ -1,0 +1,32 @@
+plugins/rime/src/realtime/realtime_model.ts
+  s_2ed902f4b7cb9e::t_a39e2c0a2ecb97 595-596,598
+  s_2ed902f4b7cb9e::t_ee795b99be5dca 663-671,863-867
+  s_2ed902f4b7cb9e::t_1c9d0a892c5181 194-195,661-662,672,753-773,852,961
+plugins/rime/README.md
+  s_2ed902f4b7cb9e::t_e04dc82f476476 58-60
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_2ed902f4b7cb9e::t_cbeea16c9e2d65 488-491,503,510-513
+  s_2ed902f4b7cb9e::t_e04dc82f476476 442
+  s_2ed902f4b7cb9e::t_c303573c86b09e 21,29,432-433,439-441,443,448,450-451,453,455-461,463-465
+  s_2ed902f4b7cb9e::t_1c68f43a905305 254-256
+  s_2ed902f4b7cb9e::t_224921b2275ead 257-281
+  s_2ed902f4b7cb9e::t_c195313a0524a0 466-487,492-502,504-509,514-520
+plugins/rime/src/realtime/test_helpers.ts
+  s_2ed902f4b7cb9e::t_c303573c86b09e 32,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f61d58e65345f69856a06459b148a4f98490088d",
+  "prompts": {},
+  "sessions": {
+    "s_2ed902f4b7cb9e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17990-75da-7f31-bed9-8edddd12f59a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
