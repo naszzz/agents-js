@@ -1,0 +1,19 @@
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_2ed902f4b7cb9e::t_60cd223b8323d7 6-7,9-10,12-17,691-1210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "158fa565bc5849ad6f1223d68009fa8e9f25f452",
+  "prompts": {},
+  "sessions": {
+    "s_2ed902f4b7cb9e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17990-75da-7f31-bed9-8edddd12f59a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
