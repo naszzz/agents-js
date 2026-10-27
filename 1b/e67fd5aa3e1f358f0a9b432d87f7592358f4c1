@@ -1,0 +1,33 @@
+pnpm-workspace.yaml
+  s_2ed902f4b7cb9e::t_6165959b1b0707 10-11
+plugins/rime/README.md
+  s_2ed902f4b7cb9e::t_147c22b24717a4 96
+plugins/rime/package.json
+  s_2ed902f4b7cb9e::t_641f184973613d 54
+pnpm-lock.yaml
+  s_5911e830bd94ce::t_213348ccfd9d95 1319-1320,2825-2826,6893
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1be67fd5aa3e1f358f0a9b432d87f7592358f4c1",
+  "prompts": {},
+  "sessions": {
+    "s_2ed902f4b7cb9e": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a17990-75da-7f31-bed9-8edddd12f59a",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    },
+    "s_5911e830bd94ce": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a170af-549d-7e30-82fd-bec4cd7bb3d6",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
