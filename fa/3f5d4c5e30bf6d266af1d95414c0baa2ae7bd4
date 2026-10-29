@@ -1,0 +1,35 @@
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_74cf0387763fe6::t_c95198c2b1b891 196-235,237-238,960-962,968-969
+  s_74cf0387763fe6::t_cd497425a543c5 900-903,911,920,926,928-934,939,963-967
+  s_74cf0387763fe6::t_fc1bfd6232e35b 694-696,700-701,705,915-917,942-959,970-973
+  s_74cf0387763fe6::t_c8dc486f5f157e 888,905-908,937
+  s_74cf0387763fe6::t_24fb226bb7bc96 674-693,697-699,702-704,706-708,904,909-910,912-914,918-919,921-925,927,935-936,938,940
+plugins/rime/src/realtime/realtime_model.ts
+  s_74cf0387763fe6::t_1fb465888a4017 329-333,500,642,708
+  s_74cf0387763fe6::t_26f07dbd052729 343-344
+.changeset/rime-history-recovery.md
+  s_74cf0387763fe6::t_677f8f91afdfea 1-8
+plugins/rime/README.md
+  s_74cf0387763fe6::t_f80b070d94bd7a 69-72
+  s_74cf0387763fe6::t_677f8f91afdfea 65-68,73-76
+plugins/rime/src/realtime/history.ts
+  s_74cf0387763fe6::t_8369b166ed2398 12,15,94-95,98-101,113-116,247,250,342,348,354-355,359-360,363,367-368,370-378
+  s_74cf0387763fe6::t_7c9b5c6116e4fb 248-249,270,361-362,364-366,369
+  s_74cf0387763fe6::t_1bbf8891d8b07c 251,383,396-399
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fa3f5d4c5e30bf6d266af1d95414c0baa2ae7bd4",
+  "prompts": {},
+  "sessions": {
+    "s_74cf0387763fe6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1887f-7fee-7692-93b3-b890432b3a7e",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
