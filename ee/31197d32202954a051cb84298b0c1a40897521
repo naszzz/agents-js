@@ -1,0 +1,27 @@
+plugins/rime/src/realtime/playback.ts
+  s_b12995d23936bf::t_7490428dd01d19 299-301
+plugins/rime/src/realtime/history.ts
+  s_b12995d23936bf::t_b5a1dd918bf7e6 8
+plugins/rime/src/realtime/review_playback.test.ts
+  s_b12995d23936bf::t_4bf52821ab65aa 1-46
+plugins/rime/src/stt.test.ts
+  s_b12995d23936bf::t_62de68572415b2 59,194-255
+plugins/rime/src/stt.ts
+  s_b12995d23936bf::t_795aa845f0f55d 349,390,470,486-488
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ee31197d32202954a051cb84298b0c1a40897521",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
