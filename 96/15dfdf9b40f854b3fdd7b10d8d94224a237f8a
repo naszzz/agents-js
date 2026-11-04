@@ -1,0 +1,21 @@
+plugins/rime/README.md
+  s_b12995d23936bf::t_01c8e91eb84d09 180-183
+plugins/rime/src/stt.test.ts
+  s_b12995d23936bf::t_05543b4799c77e 340-418
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9615dfdf9b40f854b3fdd7b10d8d94224a237f8a",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
