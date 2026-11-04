@@ -1,0 +1,27 @@
+plugins/rime/README.md
+  s_b12995d23936bf::t_1b26af8579cc04 261-262
+plugins/rime/src/options.test.ts
+  s_b12995d23936bf::t_f15c366a9c66bf 197,200
+plugins/rime/src/stt.test.ts
+  s_b12995d23936bf::t_2119ec3cdb1e8c 256-273
+plugins/rime/src/stt.ts
+  s_b12995d23936bf::t_1ea79e412cb8c2 79
+plugins/rime/src/websocket.test.ts
+  s_b12995d23936bf::t_0dc590fd7bb8e6 199,208
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a66f66e836fe4f0f34826d23bf2454c4b10d7492",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
