@@ -1,0 +1,19 @@
+plugins/rime/src/realtime/progress.test.ts
+  s_b12995d23936bf::t_41032a946c323e 287-384
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8a8a1c87cbb1723ea152d9b6a282dc006d7715ea",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
