@@ -1,0 +1,30 @@
+plugins/rime/src/realtime/realtime_model.ts
+  s_b12995d23936bf::t_0caecf447f841c 632,660-668
+  s_b12995d23936bf::t_311982f7c3ab46 8
+plugins/rime/README.md
+  s_b12995d23936bf::t_2446d861a985f2 98-102
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_b12995d23936bf::t_311982f7c3ab46 691-694,705-707,721-725
+  s_b12995d23936bf::t_c587b6e27386c9 645,757-760,764-787
+  s_b12995d23936bf::t_e51d3ee4581fea 626,633,680-690,698-704,708-720,726-735
+  s_b12995d23936bf::t_2446d861a985f2 695-697,736-756,791
+  s_b12995d23936bf::t_7c70b036a6e9fc 761-763,788-790
+plugins/rime/src/realtime/history.ts
+  s_b12995d23936bf::t_0caecf447f841c 32-33,473,479-486,595-597
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0f80de0d92880e0a17d70972601109c912c046b1",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
