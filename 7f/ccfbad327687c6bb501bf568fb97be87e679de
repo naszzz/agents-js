@@ -1,0 +1,25 @@
+plugins/rime/README.md
+  s_b12995d23936bf::t_e9e204da73107e 153
+plugins/rime/etc/agents-plugin-rime.api.md
+  s_b12995d23936bf::t_bc26e57bbc0d93 113-114
+plugins/rime/src/realtime/realtime_model.test.ts
+  s_b12995d23936bf::t_02d1685ffd92b0 103
+plugins/rime/src/realtime/realtime_model.ts
+  s_b12995d23936bf::t_a6fe50243c77c9 119,121-122,124
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7fccfbad327687c6bb501bf568fb97be87e679de",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
