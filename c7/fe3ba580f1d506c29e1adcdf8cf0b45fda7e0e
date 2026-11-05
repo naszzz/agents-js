@@ -1,0 +1,147 @@
+agents/src/ipc/job_proc_executor.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,25,30,35,40,44,82-84,110-114
+  s_b12995d23936bf::t_ddb9e3eaf071f8 115-117
+examples/src/nvidia_agent.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-39
+.changeset/google-realtime-recover-closes.md
+  s_b12995d23936bf::t_9729835820dc6a 1-7
+plugins/nvidia/src/tts.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-401
+plugins/nvidia/src/stt.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-386
+agents/src/ipc/job_proc_lazy_main.ts
+  s_b12995d23936bf::t_9729835820dc6a 36,146,149-155,186
+agents/src/log_core.ts
+  s_b12995d23936bf::t_9729835820dc6a 37-42
+agents/src/ipc/proc_pool.ts
+  s_b12995d23936bf::t_9729835820dc6a 5,12,23-24,44,55,67,80-81,83,99,107-108,110-111,115,125
+.changeset/stream-channel-downstream-cancel.md
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+plugins/nvidia/README.md
+  s_b12995d23936bf::t_9729835820dc6a 1-73
+plugins/nvidia/proto/riva/proto/riva_tts.proto
+  s_b12995d23936bf::t_9729835820dc6a 1-42
+agents/src/voice/agent_session.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 25,40,71,96
+agents/src/ipc/job_proc_executor.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-64
+agents/src/worker.ts
+  s_b12995d23936bf::t_9729835820dc6a 7,12,14,33-34,55,408-410,475,479,608-629,734-749,756,829-830,832,838,878-879,898,969-973,995,1044-1046
+plugins/nvidia/proto/riva/proto/riva_audio.proto
+  s_b12995d23936bf::t_9729835820dc6a 1-16
+agents/src/job_lifecycle.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,17-19,137-184
+plugins/nvidia/src/tts.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-346
+agents/src/ipc/job_trace.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,21-22,231-268
+  s_b12995d23936bf::t_0839eb08331f43 269
+turbo.json
+  s_b12995d23936bf::t_9729835820dc6a 75
+agents/src/voice/room_io/room_io.ts
+  s_b12995d23936bf::t_9729835820dc6a 33,342,354-362
+  s_b12995d23936bf::t_71f7f93c47bfb0 363-364
+agents/src/stream/stream_channel.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 166-201
+.changeset/agent-join-timing.md
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+.changeset/worker-msg-queue.md
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+examples/package.json
+  s_b12995d23936bf::t_9729835820dc6a 46
+plugins/nvidia/src/proto.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-140
+agents/package.json
+  s_b12995d23936bf::t_9729835820dc6a 72
+plugins/nvidia/tsup.config.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-9
+plugins/nvidia/proto/riva/proto/riva_asr.proto
+  s_b12995d23936bf::t_9729835820dc6a 1-82
+agents/src/worker.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 6,9,12,18,175-176,181,267-397
+agents/src/stream/stream_channel.ts
+  s_b12995d23936bf::t_9729835820dc6a 5,22-32,34-44,78,80-83,85-86
+agents/src/ipc/message.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,62-66
+plugins/nvidia/NOTICE
+  s_b12995d23936bf::t_9729835820dc6a 1-24
+agents/src/voice/remote_session.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 6,18,20,22-27,33,47,144-278
+  s_b12995d23936bf::t_52cdeb12478ec8 279
+agents/src/ipc/proc_pool.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 9,27-30,39,172,224-271
+  s_b12995d23936bf::t_90d04fd5f63252 272
+agents/src/voice/agent_session.ts
+  s_b12995d23936bf::t_9729835820dc6a 556,949-951,993-994,2033-2047,2323-2328,2333
+agents/src/job_lifecycle.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,17,19,302-379
+  s_b12995d23936bf::t_937b40a2cc7ecb 380-381
+agents/src/ipc/job_trace.ts
+  s_b12995d23936bf::t_9729835820dc6a 4,79-124
+  s_b12995d23936bf::t_8f2d556e632900 125
+examples/src/tavus_avatar.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-61
+plugins/nvidia/src/log.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-6
+plugins/nvidia/tsconfig.json
+  s_b12995d23936bf::t_9729835820dc6a 1-15
+agents/src/job.ts
+  s_b12995d23936bf::t_9729835820dc6a 24,49,172-179,215-220,246-251,508,531
+plugins/nvidia/src/connection.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-47
+plugins/nvidia/src/connection.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-57
+plugins/tavus/README.md
+  s_b12995d23936bf::t_9729835820dc6a 40-45
+agents/src/voice/remote_session.ts
+  s_b12995d23936bf::t_9729835820dc6a 33,43-44,81,97,563-569,753-764,769,774-776,778,790-795,797,799-828,843-847,856,882,884,899-906,928-930,936,939-941,1067-1079,1159,1168-1176,1185,1187,1189,1191,1201,1211,1253-1267,1271,1296-1301,1308-1313,1326,1345,1351,1380-1386,1390-1391,1394-1398,1405-1409,1413,1426-1432,1437-1443,1580-1581
+  s_b12995d23936bf::t_731ba58eaae4ca 1582
+plugins/nvidia/etc/agents-plugin-nvidia.api.md
+  s_b12995d23936bf::t_9729835820dc6a 1-137
+LICENSES/MIT.txt
+  s_b12995d23936bf::t_9729835820dc6a 1-19
+plugins/nvidia/src/index.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-19
+.changeset/green-pandas-listen.md
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+plugins/nvidia/package.json
+  s_b12995d23936bf::t_9729835820dc6a 1-53
+plugins/nvidia/proto/riva/proto/riva_common.proto
+  s_b12995d23936bf::t_9729835820dc6a 1-11
+agents/etc/agents.api.md
+  s_b12995d23936bf::t_9729835820dc6a 4768-4771,4816-4817,6525,6530,6776-6780,7051,7054,7063-7065,9920-9923
+plugins/google/src/realtime/realtime_reconnect.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-475
+plugins/google/etc/agents-plugin-google.api.md
+  s_b12995d23936bf::t_9729835820dc6a 15,27,35,351-352,362,367,369,401,404,407-408,410,576,581
+agents/src/voice/room_io/room_io.test.ts
+  s_b12995d23936bf::t_9729835820dc6a 407,435,462-490,496,528
+plugins/nvidia/src/stt.ts
+  s_b12995d23936bf::t_9729835820dc6a 1-349
+plugins/google/src/realtime/realtime_api.ts
+  s_b12995d23936bf::t_9729835820dc6a 52-53,600-601,655-657,1115-1122,1125,1129-1132,1145-1148,1164-1181,1184-1199,1205-1208,1245-1250,1256-1257,1259,1261,1265,1267-1274,1277-1285,1300,1389,1503-1506,1512
+agents/src/voice/generation.ts
+  s_b12995d23936bf::t_9729835820dc6a 1242-1244
+.changeset/simulation-finalize-after-end-call.md
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+plugins/nvidia/api-extractor.json
+  s_b12995d23936bf::t_9729835820dc6a 1-5
+pnpm-lock.yaml
+  s_b12995d23936bf::t_d45f71623ba7c6 81,143-144,335-337,1167-1191,2165-2170,2587-2591,4075-4077,6662-6665,6996-7000,8581-8582,8599,8614,8635,8640,8652,8659,8680,9570,10703
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c7fe3ba580f1d506c29e1adcdf8cf0b45fda7e0e",
+  "prompts": {},
+  "sessions": {
+    "s_b12995d23936bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a1a4a7-c9a5-7a60-9ee1-9f9a25b963a1",
+        "model": "gpt-6-astra"
+      },
+      "human_author": "naszzz <naszagorov@gmail.com>"
+    }
+  }
+}
